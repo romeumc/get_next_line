@@ -27,7 +27,7 @@ void	test(int fd)
 }
 
 
-int		testfile()
+int		testfile(char *filename)
 {
 	int             fd;
 	int             i;
@@ -36,11 +36,9 @@ int		testfile()
 	//char			*lineadress[66];
 	
 	j = 1;
-	printf("\n==========================================\n");
-	printf("========== TEST 1 : The Alphabet =========\n");
-	printf("==========================================\n\n");
+	printf("\n\n========== TESTE - %s - BUFFER_SIZE:%d =========\n\n", filename, BUFFER_SIZE);
 
-	if (!(fd = open("tester.mazoise/files/alphabet", O_RDONLY)))
+	if (!(fd = open(filename, O_RDONLY)))
 	{
 		printf("\nError in open\n");
 		return (0);
@@ -56,10 +54,30 @@ int		testfile()
 	return (0);
 }
 
+int		testfd()
+{
+	char    		*line = 0;
+	printf("\n==========================================\n");
+	printf("========= TEST 8 : Wrong Input ===========\n");
+	printf("==========================================\n\n");
+
+	if (get_next_line(180, &line) == -1)
+		printf("Well Done, you return -1 if no FD\n\n");
+	else
+		printf("Not Good, you don't return -1 if no FD\n\n");
+	return (0);
+}
+
 int main()
 {
 	//test(0);
-	testfile();
+	//testfile("tester.mrjvs/tests/normal/5.txt");
+	testfile("tester.mrjvs/tests/normal/1.txt");
+	//testfile("tester.mrjvs/tests/normal/4.txt");
+	//testfile("tester.mazoise/files/alphabet");
+	//testfile("tester.mazoise/files/huge_alphabet");
+	//testfd();
+	
 	// int	buffer_size;
 
 	// buffer_size = (BUFFER_SIZE > 2147479552) ? 2147479552 : BUFFER_SIZE;

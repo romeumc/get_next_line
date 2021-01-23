@@ -6,7 +6,7 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 23:32:01 by rmartins          #+#    #+#             */
-/*   Updated: 2021/01/22 23:30:12 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/01/23 19:33:37 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,20 @@ size_t	ft_strlen(const char *s)
 	while (s[i] != '\0')
 		i++;
 	return (i);
+}
+
+void	ft_bzero(void *s, size_t n)
+{
+	size_t			i;
+	unsigned char	*temp;
+
+	temp = (unsigned char *)s;
+	i = 0;
+	while (i < n)
+	{
+		temp[i] = '\0';
+		i++;
+	}
 }
 
 char	*ft_strcpy(char *dest, const char *src)
