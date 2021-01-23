@@ -1,3 +1,5 @@
+#include <fcntl.h>
+
 #include "get_next_line.h"
 
 void	doprint(int out, char **str, int line)
@@ -24,10 +26,40 @@ void	test(int fd)
 	close(fd);
 }
 
+
+int		testfile()
+{
+	int             fd;
+	int             i;
+	int             j;
+	char    		*line = 0;
+	//char			*lineadress[66];
+	
+	j = 1;
+	printf("\n==========================================\n");
+	printf("========== TEST 1 : The Alphabet =========\n");
+	printf("==========================================\n\n");
+
+	if (!(fd = open("tester.mazoise/files/alphabet", O_RDONLY)))
+	{
+		printf("\nError in open\n");
+		return (0);
+	}
+	while ((i = get_next_line(fd, &line)) > 0)
+	{
+		printf("[OUT %d] |%s|\n", i, line);
+		j++;
+	}
+	printf("[OUT %d] |%s|\n", i, line);
+	free(line);
+	close(fd);
+	return (0);
+}
+
 int main()
 {
-	printf("teste\n");
-	test(0);
+	//test(0);
+	testfile();
 	// int	buffer_size;
 
 	// buffer_size = (BUFFER_SIZE > 2147479552) ? 2147479552 : BUFFER_SIZE;
