@@ -6,7 +6,7 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 22:15:31 by rmartins          #+#    #+#             */
-/*   Updated: 2021/01/23 21:31:55 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/01/23 23:08:33 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,9 @@ int			read_buffer(char *buffer, char **line, int buff_len, int pos)
 	return (0);
 }
 
-void		clean_extra_buffer(char *buffer, int pos)
+void		clean_extra_buffer(char *buffer, int pos, int buffer_size)
 {
-	while (pos < (int)ft_strlen(buffer))
+	while (pos < buffer_size)
 	{
 		buffer[pos] = '\0';
 		pos++;
@@ -84,13 +84,13 @@ void		clean_extra_buffer(char *buffer, int pos)
 int			get_next_line(int fd, char **line)
 {
 	int			pos;
-	static char	buffer[ABS(BUFFER_SIZE) > MAX ? MAX : ABS(BUFFER_SIZE)];
+	static char	buffer[ABS(BUFFER_SIZE) > MAX ? MAX : ABS(BUFFER_SIZE + 1)];
 	int			ret;
 	int			buffer_size;
 
 	//static char	buffer[(BUFFER_SIZE < 0 ? 1 : BUFFER_SIZE) > MAX ? MAX : (BUFFER_SIZE < 0 ? 1 : BUFFER_SIZE)];
 	buffer_size = BUFFER_SIZE > MAX ? MAX : BUFFER_SIZE;
-	if (buffer_size <= 0)
+	if (buffer_size <= 0 || line == NULL)
 		return (-1);
 	if (!(*line = malloc(sizeof(char) * 1)))
 		return (-1);
@@ -101,11 +101,11 @@ int			get_next_line(int fd, char **line)
 	ft_bzero(buffer, buffer_size);
 	while ((ret = read(fd, buffer, buffer_size)))
 	{
-		if (ret < (int)ft_strlen(buffer))
-		{
+		//if (ret < (int)ft_strlen(buffer))
+		//{
 			//printf("**** buffer READ - ret:%d length:%ld | [%s]\n", ret, ft_strlen(buffer), buffer);
-			clean_extra_buffer(buffer, ret);
-		}
+			clean_extra_buffer(buffer, ret, buffer_size);
+		//}
 		//print_buffer(buffer, "main READ begin ", line, ret);
 		if (ret < 0)
 		{

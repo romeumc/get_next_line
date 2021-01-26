@@ -6,7 +6,7 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 21:08:42 by rmartins          #+#    #+#             */
-/*   Updated: 2021/01/23 21:46:24 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/01/23 22:53:50 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,10 +80,10 @@ int		testfd(void)
 
 int		main(void)
 {
-	testfd();
-	testfile("tester.mrjvs/tests/normal/5.txt");
-	testfile("tester.mrjvs/tests/normal/1.txt");
-	testfile("tester.mrjvs/tests/normal/4.txt");
+	// testfd();
+	testfile("../tester.mrjvs/tests/normal/5.txt");
+	testfile("../tester.mrjvs/tests/normal/1.txt");
+	testfile("../tester.mrjvs/tests/normal/4.txt");
 	testfile("romeu.tester/teste1.txt");
 	//testfile("tester.mazoise/files/alphabet");
 	//testfile("tester.mazoise/files/huge_alphabet");
