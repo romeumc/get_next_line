@@ -6,7 +6,7 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 22:15:31 by rmartins          #+#    #+#             */
-/*   Updated: 2021/01/23 23:08:33 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/01/28 02:34:41 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,7 @@ int			get_next_line(int fd, char **line)
 		return (-1);
 	if (!(*line = malloc(sizeof(char) * 1)))
 		return (-1);
+	*line[0] = '\0';
 	//print_buffer(buffer, "INI             ", line, ft_strlen(buffer));
 	pos = ft_strlen(buffer) == 0 ? 0 : read_buffer(buffer, line, ft_strlen(buffer), 0);
 	if (pos < 0)
