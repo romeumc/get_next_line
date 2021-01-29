@@ -6,7 +6,7 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 22:05:38 by rmartins          #+#    #+#             */
-/*   Updated: 2021/01/23 23:08:50 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/01/29 16:04:42 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 #  define BUFFER_SIZE 1024
 # endif
 # define MAX 2147479552
+# define MAXFD 1024
 # define ABS(x) x > 0 ? x : -x
 
 int		get_next_line(int fd, char **line);

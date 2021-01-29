@@ -6,7 +6,7 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 22:15:31 by rmartins          #+#    #+#             */
-/*   Updated: 2021/01/28 21:42:11 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/01/29 16:09:31 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,13 +84,13 @@ void		clean_extra_buffer(char *buffer, int pos, int buffer_size)
 int			get_next_line(int fd, char **line)
 {
 	int			pos;
-	static char	*buffer[ABS(BUFFER_SIZE) > MAX ? MAX : ABS(BUFFER_SIZE + 1)];
+	static char	buffer[MAXFD][ABS(BUFFER_SIZE) > MAX ? MAX : ABS(BUFFER_SIZE + 1)];
 	int			ret;
 	int			buffer_size;
 
 	//static char	buffer[(BUFFER_SIZE < 0 ? 1 : BUFFER_SIZE) > MAX ? MAX : (BUFFER_SIZE < 0 ? 1 : BUFFER_SIZE)];
 	buffer_size = BUFFER_SIZE > MAX ? MAX : BUFFER_SIZE;
-	if (buffer_size <= 0 || line == NULL)
+	if (buffer_size <= 0 || line == NULL || fd > MAXFD)
 		return (-1);
 	if (!(*line = malloc(sizeof(char) * 1)))
 		return (-1);
@@ -99,7 +99,7 @@ int			get_next_line(int fd, char **line)
 	pos = ft_strlen(buffer[fd]) == 0 ? 0 : read_buffer(buffer[fd], line, ft_strlen(buffer[fd]), 0);
 	if (pos < 0)
 		return (1);
-	ft_bzero(&buffer[fd], buffer_size);
+	ft_bzero(buffer[fd], buffer_size);
 	while ((ret = read(fd, buffer[fd], buffer_size)))
 	{
 		//if (ret < (int)ft_strlen(buffer))
