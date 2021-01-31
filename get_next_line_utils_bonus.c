@@ -6,13 +6,13 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 23:32:01 by rmartins          #+#    #+#             */
-/*   Updated: 2021/01/31 19:03:17 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/01/31 22:46:10 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
 
-size_t		ft_strlen(const char *s)
+size_t		len(const char *s)
 {
 	int i;
 
@@ -46,11 +46,7 @@ char		*ft_strcpy(char *dest, const char *src)
 		dest[i] = src[i];
 		i++;
 	}
-	// while (i < BUFFER_SIZE)
-	// {
-		dest[i] = '\0';
-	// 	i++;
-	// }
+	dest[i] = '\0';
 	return (dest);
 }
 
@@ -60,7 +56,7 @@ char		*ft_strdup_join(char *s, char c)
 	char	*temp;
 
 	i = 0;
-	if (!(temp = malloc(sizeof(char) * (ft_strlen(s) + 2))))
+	if (!(temp = malloc(sizeof(char) * (len(s) + 2))))
 		return (NULL);
 	while (s[i] != '\0')
 	{

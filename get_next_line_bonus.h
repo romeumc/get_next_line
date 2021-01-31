@@ -6,7 +6,7 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 22:05:38 by rmartins          #+#    #+#             */
-/*   Updated: 2021/01/31 17:16:00 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/01/31 22:46:37 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,6 @@
 # include <unistd.h>
 # include <stdlib.h>
 
-#include <stdio.h>
-#include <ctype.h>
-
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 1024
 # endif
@@ -26,7 +23,7 @@
 # define MAXFD 1024
 
 int		get_next_line(int fd, char **line);
-size_t	ft_strlen(const char *s);
+size_t	len(const char *s);
 void	ft_bzero(void *s, size_t n);
 char	*ft_strcpy(char *dest, const char *src);
 char	*ft_strdup_join(char *s, char c);
