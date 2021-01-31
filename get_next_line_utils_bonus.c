@@ -6,7 +6,7 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 23:32:01 by rmartins          #+#    #+#             */
-/*   Updated: 2021/01/31 16:53:51 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/01/31 19:03:17 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,11 @@ char		*ft_strcpy(char *dest, const char *src)
 		dest[i] = src[i];
 		i++;
 	}
-	while (i < BUFFER_SIZE)
-	{
+	// while (i < BUFFER_SIZE)
+	// {
 		dest[i] = '\0';
-		i++;
-	}
+	// 	i++;
+	// }
 	return (dest);
 }
 

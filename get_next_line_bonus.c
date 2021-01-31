@@ -6,7 +6,7 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 22:15:31 by rmartins          #+#    #+#             */
-/*   Updated: 2021/01/31 16:52:43 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/01/31 18:49:58 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,14 +55,12 @@ int			read_buffer(char *buffer, char **line, int buff_len, int pos)
 		if (buffer[i + j] == '\0')
 		{
 			ft_strcpy(buffer, &buffer[i + j + 1]);
-			//buffer = shift_buffer(buffer, i + j + 1);
 			return (pos + i + j + 1);
 		}
 		if (buffer[i + j] == '\n')
 		{
 			//print_buffer(buffer, "READ_BUFFER(\\n) ", line, buff_len);
 			ft_strcpy(buffer, &buffer[i + j + 1]);
-			//buffer = shift_buffer(buffer, i + j + 1);
 			return (-(pos + i + j + 1));
 		}
 		//line[0][j + pos] = buffer[i + j];
@@ -86,11 +84,11 @@ void		clean_extra_buffer(char *buffer, int pos, int buffer_size)
 int			get_next_line(int fd, char **line)
 {
 	int			pos;
-	//static char	buffer[MAXFD][(BUFFER_SIZE < 0 ? 1 : BUFFER_SIZE) > MAX ? MAX : (BUFFER_SIZE < 0 ? 1 : BUFFER_SIZE + 1)];
 	static char	buffer[MAXFD][BUFFER_SIZE + 1];
 	int			ret;
 	int			buffer_size;
 
+	//static char	buffer[MAXFD][(BUFFER_SIZE < 0 ? 1 : BUFFER_SIZE) > MAX ? MAX : (BUFFER_SIZE < 0 ? 1 : BUFFER_SIZE + 1)];
 	buffer_size = BUFFER_SIZE > MAX ? MAX : BUFFER_SIZE;
 	if (buffer_size <= 0 || line == NULL || fd > MAXFD || fd < 0 || read(fd, 0, 0) < 0)
 		return (-1);

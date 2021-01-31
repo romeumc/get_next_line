@@ -6,7 +6,7 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 22:05:38 by rmartins          #+#    #+#             */
-/*   Updated: 2021/01/31 16:45:46 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/01/31 17:16:00 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 #include <ctype.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 16
+#  define BUFFER_SIZE 1024
 # endif
 # define MAX 2147479552
 # define MAXFD 1024
