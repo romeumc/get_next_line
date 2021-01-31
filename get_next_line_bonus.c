@@ -6,7 +6,7 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 22:15:31 by rmartins          #+#    #+#             */
-/*   Updated: 2021/01/31 18:49:58 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/01/31 20:01:11 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ int			get_next_line(int fd, char **line)
 
 	//static char	buffer[MAXFD][(BUFFER_SIZE < 0 ? 1 : BUFFER_SIZE) > MAX ? MAX : (BUFFER_SIZE < 0 ? 1 : BUFFER_SIZE + 1)];
 	buffer_size = BUFFER_SIZE > MAX ? MAX : BUFFER_SIZE;
-	if (buffer_size <= 0 || line == NULL || fd > MAXFD || fd < 0 || read(fd, 0, 0) < 0)
+	if (buffer_size <= 0 || line == NULL || fd > MAXFD || fd < 0)
 		return (-1);
 	if (!(*line = malloc(sizeof(char))))
 		return (-1);
@@ -102,6 +102,8 @@ int			get_next_line(int fd, char **line)
 	ft_bzero(buffer[fd], buffer_size);
 	while ((ret = read(fd, buffer[fd], buffer_size)))
 	{
+		if (ret < 0)
+			return (-1);
 		//printf("**** buffer READ - ret:%d length:%ld | [%s]\n", ret, ft_strlen(buffer[fd]), buffer[fd]);
 		clean_extra_buffer(buffer[fd], ret, buffer_size);
 		//print_buffer(buffer[fd], "main READ begin ", line, ret);
