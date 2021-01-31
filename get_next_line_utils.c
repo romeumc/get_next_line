@@ -6,7 +6,7 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 23:32:01 by rmartins          #+#    #+#             */
-/*   Updated: 2021/01/28 21:35:57 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/01/31 12:42:52 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,34 @@ void		ft_bzero(void *s, size_t n)
 	}
 }
 
+void		clear_buffer(char *buffer)
+{
+	int	i;
+
+	i = 0;
+	while (i < BUFFER_SIZE)
+	{
+		buffer[i] = '\0';
+		i++;
+	}
+}
+
+char		*shift_buffer(char *buffer, int pos)
+{
+	int		i;
+	char	*temp;
+
+	i = 0;
+	if (!(temp = malloc(sizeof(char) * (BUFFER_SIZE + 1))))
+		return (NULL);
+	while (buffer[i + pos] != '\0')
+	{
+		temp[i] = buffer[i + pos];
+		i++;
+	}
+	return (temp);
+}
+
 char		*ft_strcpy(char *dest, const char *src)
 {
 	int	i;
@@ -46,27 +74,31 @@ char		*ft_strcpy(char *dest, const char *src)
 		dest[i] = src[i];
 		i++;
 	}
-	dest[i] = '\0';
+	//dest[i] = '\0';
+	while (i < BUFFER_SIZE)
+	{
+		dest[i] = '\0';
+		i++;
+	}
+	
 	return (dest);
 }
 
-char		*ft_strdup_join(const char *s, char c)
+char		*ft_strdup_join(char *s, char c)
 {
 	int		i;
 	char	*temp;
 
 	i = 0;
-	temp = (char *)malloc(ft_strlen(s) + 2);
-	if (temp != NULL)
+	if (!(temp = malloc(sizeof(char) * (ft_strlen(s) + 2))))
+		return (NULL);
+	while (s[i] != '\0')
 	{
-		while (s[i] != '\0')
-		{
-			temp[i] = s[i];
-			i++;
-		}
-		temp[i++] = c;
-		temp[i] = '\0';
-		return (temp);
+		temp[i] = s[i];
+		i++;
 	}
-	return (NULL);
+	temp[i++] = c;
+	temp[i] = '\0';
+	free(s);
+	return (temp);
 }
