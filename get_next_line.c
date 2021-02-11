@@ -6,20 +6,21 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 22:15:31 by rmartins          #+#    #+#             */
-/*   Updated: 2021/01/31 22:47:50 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/02/10 12:54:11 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int			read_buff(char *buffer, char **line, int buff_len, int pos)
+int	read_buff(char *buffer, char **line, int buff_len, int pos)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	j = 0;
-	pos = (pos <= 0) ? 0 : pos - 1;
+	if (pos > 0)
+		pos -= 1;
 	while (j + i < buff_len + 1)
 	{
 		if (buffer[i + j] == '\0')
@@ -30,7 +31,7 @@ int			read_buff(char *buffer, char **line, int buff_len, int pos)
 		if (buffer[i + j] == '\n')
 		{
 			ft_strcpy(buffer, &buffer[i + j + 1]);
-			return (-(pos + i + j + 1));
+			return ((pos + i + j + 1) * -1);
 		}
 		line[0] = ft_strdup_join(line[0], buffer[i + j]);
 		j++;
@@ -38,7 +39,7 @@ int			read_buff(char *buffer, char **line, int buff_len, int pos)
 	return (0);
 }
 
-void		clean_extra_buffer(char *buffer, int pos, int buffer_size)
+void	clean_extra_buffer(char *buffer, int pos, int buffer_size)
 {
 	while (pos < buffer_size)
 	{
@@ -47,7 +48,7 @@ void		clean_extra_buffer(char *buffer, int pos, int buffer_size)
 	}
 }
 
-int			get_next_line(int fd, char **line)
+int	get_next_line(int fd, char **line)
 {
 	int			pos;
 	static char	buff[MAXFD][BUFFER_SIZE + 1];
