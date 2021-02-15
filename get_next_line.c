@@ -6,13 +6,13 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 22:15:31 by rmartins          #+#    #+#             */
-/*   Updated: 2021/02/10 12:54:11 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/02/15 11:36:45 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int	read_buff(char *buffer, char **line, int buff_len, int pos)
+int		read_buff(char *buffer, char **line, int buff_len, int pos)
 {
 	int	i;
 	int	j;
@@ -48,7 +48,7 @@ void	clean_extra_buffer(char *buffer, int pos, int buffer_size)
 	}
 }
 
-int	get_next_line(int fd, char **line)
+int		get_next_line(int fd, char **line)
 {
 	int			pos;
 	static char	buff[MAXFD][BUFFER_SIZE + 1];
